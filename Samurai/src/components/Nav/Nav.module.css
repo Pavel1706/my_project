@@ -1,0 +1,15 @@
+.nav{
+    grid-area: n;
+    background-color: darkseagreen;
+    padding: 25px;
+
+}
+
+.sentence a {
+    color: blueviolet;
+    text-decoration: none;
+}
+
+.sentence a.activeLink{
+    color: darkgoldenrod;
+}

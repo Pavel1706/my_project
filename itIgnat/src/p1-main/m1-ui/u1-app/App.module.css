@@ -1,0 +1,9 @@
+.App {
+
+}
+.avatar{
+    width: 150px;
+    height: 150px;
+    background-image: url('foto.jpg');
+    background-size: cover;
+}
