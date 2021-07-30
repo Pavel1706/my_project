@@ -15,7 +15,6 @@ function HW1() {
 
 
             <Message
-
                 avatar={messageData.avatar}
                 name={messageData.name}
                 message={messageData.message}
