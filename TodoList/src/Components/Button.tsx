@@ -1,8 +1,8 @@
 import React from 'react';
 
 type propsType = {
-    callBack: (id:number)=> void
-    id: number
+    callBack: (id:string)=> void
+    id: string
 }
 
 export const Button =(props:propsType) =>{
