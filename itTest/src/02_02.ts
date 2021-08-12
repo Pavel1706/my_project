@@ -6,6 +6,7 @@ export type CityType = {
 }
 
 export type HouseType = {
+    id?: number
     buildedAt : number
     repaired: boolean
     address: AddressType
@@ -35,3 +36,14 @@ export type GovernmentBuildingsType={
 // export type TypeCall = {
 //     title: string
 // }
+
+export const separated = (props: Array<GovernmentBuildingsType>)=>{
+    return  props.map(t => t.address.street.title)
+}
+export const separated2 = (props: Array<HouseType>)=>{
+    return  props.map(t => t.address.street.title)
+}
+
+export const createHello = (props: Array<HouseType>)=>{
+    return props.map(t=> `Hello guys from ${t.address.street.title}`)
+}
