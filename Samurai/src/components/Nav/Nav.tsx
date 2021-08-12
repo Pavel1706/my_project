@@ -1,8 +1,18 @@
 import React from 'react';
 import p from './Nav.module.css';
 import {NavLink} from "react-router-dom";
+import {Friends} from "../Friends/Friends";
+import {ConversationType} from "../../Redux/State";
 
-export const Nav = () => {
+
+
+
+type ConversationArrayType = {
+    dialogs: ConversationType[]
+}
+
+export const Nav = (props: ConversationArrayType) => {
+    let fotka = props.dialogs.map(t=> <img className={p.avatar} src={t.foto}/>)
     return (
         <nav className={p.nav}>
             <div className={`${p.sentence} ${p.active}`}>
@@ -19,6 +29,11 @@ export const Nav = () => {
             </div>
             <div className={p.sentence}>
                 <NavLink to="/settings" activeClassName={p.activeLink}>Settings</NavLink>
+            </div>
+            <div className={p.sentence}>
+
+                <NavLink to="/Friends" className={p.avatar}>Friends</NavLink>
+                <div>{fotka}</div>
             </div>
         </nav>
     )

@@ -9,7 +9,7 @@ type ConversationItemType = {
 }
 
 export const ConversationItem = (props: ConversationItemType) => {
-    let path = '/conversation' + props.id;
+    let path = `${props.name}` + props.id;
     return    (
         <div className={p.dialog + ' ' + p.active}>
             <NavLink to={path}>{props.name}</NavLink>

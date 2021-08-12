@@ -1,6 +1,6 @@
 import React from 'react';
 import p from "./Conversation.module.css";
-import {NavLink} from "react-router-dom";
+
 
 
 type MessageType = {

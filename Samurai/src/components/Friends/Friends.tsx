@@ -9,10 +9,13 @@ type ConversationArrayType = {
 
 
 export const Friends =(props:ConversationArrayType)=>{
-    let fotka = props.dialogs.map(t=> <img className={p.avatar} src={t.foto}/>)
+
     return(
         <div className={p.avatar} >
-            <span></span>
+
+            {props.dialogs.map(t=> <li key={t.id}><div>{t.name} <img className={p.avatar} src={t.foto} /></div></li> )}
+
+
 
         </div>
     )
