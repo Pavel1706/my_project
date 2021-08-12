@@ -1,63 +1,62 @@
 import React, {useState} from 'react';
-import { v1 } from 'uuid';
 import './App.css';
 import {Todolist} from './Todolist';
-
-export type filterType = 'All' | 'Active' | 'Completed'
-
+import {v1} from "uuid";
 
 function App() {
 
-    let [tasks1, setTasks1] = useState([
+    type TypeButton = 'All' | 'Completed' | 'Active'
+
+    let [tasks1, state] = useState([
         {id: v1(), title: "HTML&CSS", isDone: true},
         {id: v1(), title: "JS", isDone: true},
         {id: v1(), title: "ReactJS", isDone: false},
-        {id: v1(), title: "HTML&CSS", isDone: true},
-        {id: v1(), title: "JS", isDone: true},
+        {id: v1(), title: "ReactJS", isDone: false},
         {id: v1(), title: "ReactJS", isDone: false}
     ])
 
-    console.log(tasks1)
+    let [now, setState] = useState<TypeButton>('All')
 
-    let [filter, setFilter] = useState<filterType>('All')
+    let todolist = tasks1
 
-
-    let dryshlag = tasks1;
-
-
-    if (filter === 'Active') {
-        dryshlag = tasks1.filter(t => t.isDone === false)
-    }
-    if (filter === 'Completed') {
-        dryshlag = tasks1.filter(t => t.isDone === true)
+    if (now === 'Completed') {
+        todolist = tasks1.filter(t => t.isDone)
     }
 
-    // hey = tasks1.filter( fd=>!fd.isDone)
-
-    const removeTask = (id: string) => {
-        tasks1 = tasks1.filter(t => t.id !== id);
-        setTasks1(tasks1)
-
+    if (now === 'Active') {
+        todolist = tasks1.filter(t => !t.isDone)
     }
 
-    function addTask(title:string) {
+    function Sort(props: 'All' | 'Completed' | 'Active') {
+        setState(props)
+    }
+
+    function AddTask(title:string){
         let newTask = {id: v1(), title: title, isDone: false}
-        let newTasks = [newTask, ...tasks1];
-        setTasks1(newTasks);
+        state([newTask, ...tasks1])
     }
 
-    const setFilterToo = (name: filterType) => {
-        setFilter(name)
-        console.log(dryshlag)
+
+    function RemoveTask(id: string) {
+        tasks1 = tasks1.filter(t => t.id !== id)
+        state(tasks1)
+    }
+
+    function changeStatus(taskId:string, isDone:boolean ) {
+        let task = tasks1.find(t => t.id === taskId)
+        if (task) {
+            task.isDone = isDone;
+        }
+    state(tasks1);
     }
 
     return (
         <div className="App">
-            <Todolist title="What to learn"
-                      tasks={dryshlag}
-                      removeTask={removeTask}
-                      setFilterToo={setFilterToo}
-                      addTask={addTask}/>
+            <Todolist title="What to learn" tasks={todolist}
+                      RemoveTask={RemoveTask}
+                      Sort={Sort}
+                      AddTask={AddTask}
+            />
 
         </div>
     );
