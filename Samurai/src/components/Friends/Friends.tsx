@@ -1,6 +1,5 @@
 import React from 'react';
-import { Friend } from './Friend/Friend';
-import {ConversationType, state} from "../../Redux/State";
+import {ConversationType} from "../../Redux/State";
 import p from './Friend/friends.module.css'
 
 type ConversationArrayType = {

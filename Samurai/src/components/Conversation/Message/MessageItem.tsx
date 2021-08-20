@@ -3,7 +3,7 @@ import p from '../Conversation.module.css'
 import {BrowserRouter, NavLink} from "react-router-dom"
 import {ConversationItem} from "../ConversationItem/ConversationItem";
 import {Message} from "../Message";
-import {addPostMessage, MessageType, StateType} from "../../../Redux/State";
+import {StateType} from "../../../Redux/State";
 
 type AppPropsType = {
     state: StateType
